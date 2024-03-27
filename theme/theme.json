@@ -1,0 +1,10 @@
+{
+    "btn-primary": {
+      "color": "green",
+      "background-color": "blue"
+    },
+    "btn-secondary": {
+        "color": "blue",
+        "background-color": "#fff"
+    }
+}

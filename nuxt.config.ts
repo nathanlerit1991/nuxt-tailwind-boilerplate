@@ -6,7 +6,8 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    '~/plugins/lazyLoading.js'
+    '~/plugins/lazyLoading.js',
+    '~/plugins/theming.js'
   ],
 
   modules: ["@nuxtjs/tailwindcss"]

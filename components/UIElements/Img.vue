@@ -25,7 +25,6 @@
   const images = Object.fromEntries(
     Object.entries(glob).map(([key, value]) => [filename(key), value.default])
   )
-
 </script>
 
 <template>
