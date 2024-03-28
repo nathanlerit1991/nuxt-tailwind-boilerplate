@@ -9,7 +9,7 @@
     import Accordion from '@/components/UIElements/Accordion.vue'
 </script>
 <template>
-    <SectionWrapper>
+    <!-- <SectionWrapper>
         <ContainerWrapper>
             <Row>
                 <Column>
@@ -21,7 +21,7 @@
                 </Column>
             </Row>
         </ContainerWrapper>
-    </SectionWrapper>
+    </SectionWrapper> -->
     <SectionWrapper>
         <ContainerWrapper>
             <Row>
