@@ -11,6 +11,9 @@
 
 
     useHead({
+        htmlAttrs: {
+            lang: 'en'
+        },
         title: 'Nuxt Tailwind Boilerplate',
         meta: [{
             name: 'description',
