@@ -48,6 +48,17 @@
             </Row>
         </ContainerWrapper>
     </SectionWrapper>
+
+    <SectionWrapper>
+        <ContainerWrapper>
+            <Row>
+                <Column>
+                    <Accordion v-for="n in 5" :key="n"/>
+                </Column>
+            </Row>
+        </ContainerWrapper>
+    </SectionWrapper>
+
     <SectionWrapper>
         <ContainerWrapper>
             <Row>
