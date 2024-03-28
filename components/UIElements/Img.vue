@@ -27,9 +27,10 @@
   )
 </script>
 
-<template> 
+<template>
   <img
-    :src="images[`${props_data.image_src}`]"
+    :src="props_data.image_loading === 'lazy' ? images[`${placeholderImage}`] : images[`${props_data.image_src}`]"
+    :data-src="props_data.image_loading === 'lazy' ? images[`${props_data.image_src}`] : null"
     :alt="props_data.image_alt"
     :loading="props_data.image_loading"
   />
