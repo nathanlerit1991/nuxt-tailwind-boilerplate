@@ -9,26 +9,13 @@
     import Accordion from '@/components/UIElements/Accordion.vue'
 </script>
 <template>
-    <!-- <SectionWrapper>
-        <ContainerWrapper>
-            <Row>
-                <Column>
-                    <Img 
-                        image_src="1" 
-                        image_alt="altbanner"
-                        image_loading="eager"
-                    ></Img>
-                </Column>
-            </Row>
-        </ContainerWrapper>
-    </SectionWrapper> -->
     <SectionWrapper>
         <ContainerWrapper>
             <Row>
                 <Column v-for="n in 8" additional_class="sm:w-1/4">
                    <Img 
-                    :image_src="`${n}`" 
-                    :image_alt="`alt${n}`"
+                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
+                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
                     image_loading="eager"
                     ></Img>
                 </Column>
@@ -40,8 +27,8 @@
             <Row>
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
-                    :image_src="`${n}`" 
-                    :image_alt="`alt${n}`"
+                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
+                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
                     image_loading="lazy"
                     ></Img>
                 </Column>
@@ -122,8 +109,8 @@
             <Row>
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
-                    :image_src="`${n}`" 
-                    :image_alt="`alt${n}`"
+                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
+                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
                     image_loading="lazy"
                     ></Img>
                 </Column>
@@ -135,8 +122,8 @@
             <Row>
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
-                    :image_src="`${n}`" 
-                    :image_alt="`alt${n}`"
+                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
+                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
                     image_loading="lazy"
                     ></Img>
                 </Column>
