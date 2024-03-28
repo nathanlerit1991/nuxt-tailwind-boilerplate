@@ -28,7 +28,7 @@
                 <Column v-for="n in 8" additional_class="sm:w-1/4">
                    <Img 
                     :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
+                    :image_alt="`alt${n}`"
                     image_loading="eager"
                     ></Img>
                 </Column>
@@ -41,7 +41,7 @@
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
                     :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
+                    :image_alt="`alt${n}`"
                     image_loading="lazy"
                     ></Img>
                 </Column>
@@ -123,7 +123,7 @@
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
                     :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
+                    :image_alt="`alt${n}`"
                     image_loading="lazy"
                     ></Img>
                 </Column>
@@ -136,7 +136,7 @@
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
                     :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt@/assets/images/naruto/${n}.jpg`"
+                    :image_alt="`alt${n}`"
                     image_loading="lazy"
                     ></Img>
                 </Column>
