@@ -25,6 +25,19 @@
     <SectionWrapper>
         <ContainerWrapper>
             <Row>
+                <Column v-for="n in 8" additional_class="sm:w-1/4">
+                   <Img 
+                    :image_src="`${n}`" 
+                    :image_alt="`alt${n}`"
+                    image_loading="eager"
+                    ></Img>
+                </Column>
+            </Row>
+        </ContainerWrapper>
+    </SectionWrapper>
+    <SectionWrapper>
+        <ContainerWrapper>
+            <Row>
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
                     :image_src="`${n}`" 
