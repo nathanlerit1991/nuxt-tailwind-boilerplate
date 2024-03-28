@@ -9,7 +9,7 @@
     import Accordion from '@/components/UIElements/Accordion.vue'
 </script>
 <template>
-    <SectionWrapper>
+    <!-- <SectionWrapper>
         <ContainerWrapper>
             <Row>
                 <Column>
@@ -21,13 +21,13 @@
                 </Column>
             </Row>
         </ContainerWrapper>
-    </SectionWrapper>
+    </SectionWrapper> -->
     <SectionWrapper>
         <ContainerWrapper>
             <Row>
                 <Column v-for="n in 32" additional_class="sm:w-1/4">
                    <Img 
-                    :image_src="`${n}`" 
+                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
                     :image_alt="`alt${n}`"
                     image_loading="lazy"
                     ></Img>
@@ -35,7 +35,7 @@
             </Row>
         </ContainerWrapper>
     </SectionWrapper>
-    <SectionWrapper>
+    <!-- <SectionWrapper>
         <ContainerWrapper>
             <Row>
                 <Column>
@@ -198,5 +198,5 @@
                 </Column>
             </Row>
         </ContainerWrapper>
-    </SectionWrapper>
+    </SectionWrapper> -->
 </template>
