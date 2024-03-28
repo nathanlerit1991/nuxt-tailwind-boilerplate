@@ -7,6 +7,16 @@
     import Img from '@/components/UIElements/Img.vue'
     import Calendar from '@/components/UIElements/Calendar.vue'
     import Accordion from '@/components/UIElements/Accordion.vue'
+
+
+
+    useHead({
+        title: 'Nuxt Tailwind Boilerplate',
+        meta: [{
+            name: 'description',
+            content: 'description'
+        }]
+    })
 </script>
 <template>
     <SectionWrapper>
