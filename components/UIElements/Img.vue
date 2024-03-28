@@ -29,8 +29,7 @@
 
 <template> 
   <img
-    :src="props_data.image_loading === 'lazy' ? images[`${placeholderImage}`] : images[`${props_data.image_src}`]"
-    :data-src="props_data.image_loading === 'lazy' ? images[`${props_data.image_src}`] : null"
+    :src="images[`${props_data.image_src}`]"
     :alt="props_data.image_alt"
     :loading="props_data.image_loading"
   />
