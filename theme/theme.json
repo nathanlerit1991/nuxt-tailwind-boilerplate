@@ -1,10 +1,20 @@
 {
-    "btn-primary": {
-      "color": "green",
-      "background-color": "blue"
-    },
-    "btn-secondary": {
-        "color": "blue",
-        "background-color": "#fff"
-    }
+  "btn-primary": {
+    "color": "green",
+    "background-color": "blue",
+    "padding-left": "16px",
+    "padding-top": "8px",
+    "padding-right": "16px",
+    "padding-bottom": "8px",
+    "border-radius": "8px"
+  },
+  "btn-secondary": {
+      "color": "blue",
+      "background-color": "#fff",
+      "padding-left": "16px",
+      "padding-top": "8px",
+      "padding-right": "16px",
+      "padding-bottom": "8px",
+      "border-radius": "8px"
+  }
 }
