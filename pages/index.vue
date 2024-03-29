@@ -32,6 +32,10 @@
                     image_loading="eager"
                     ></Img>
                 </Column>
+                <Column>
+                    <button class="tbs-btn-primary">Primary</button>
+                    <button class="tbs-btn-secondary m-5">Secondary</button>
+                </Column>
             </Row>
         </ContainerWrapper>
     </SectionWrapper>

@@ -6,14 +6,32 @@ import ContainerWrapper from '@/components/ContainerWrapper.vue'
 import Row from '@/components/Row.vue'
 import Column from '@/components/Column.vue'
 
-const temporaryConfigStorage = ref(customConfig);
-
-const saveConfig = () => {
-  // Update the original customConfig object with the modified values
-  Object.assign(customConfig, temporaryConfigStorage.value);
-  console.log("customConfig", customConfig)
-  // You might want to save the configuration to localStorage or a server here
+// REMOVE THIS IF BACKEND IS AVAILABLE //
+let initialConfig = '';
+if (process.client) {
+  const storedConfig = localStorage.getItem('themeCSS');
+  if (storedConfig) {
+    initialConfig = JSON.parse(storedConfig);
+  } else {
+    initialConfig = customConfig
+  }
 }
+const temporaryConfigStorage = ref(initialConfig);
+// END REMOVE THIS IF BACKEND IS AVAILABLE //
+
+
+// UNCOMMENT WHEN BACKEND IS AVAILABLE //
+// const temporaryConfigStorage = ref(customConfig);
+const saveConfig = () => {
+  Object.assign(customConfig, temporaryConfigStorage.value);
+  //Add code to push the data customConfig to backend
+
+
+  // REMOVE THIS IF BACKEND IS AVAILABLE //
+  localStorage.setItem('themeCSS', JSON.stringify(customConfig));
+  // END REMOVE THIS IF BACKEND IS AVAILABLE //
+}
+
 
 // Method to generate button style based on properties
 const generateStyle = (properties) => {
@@ -33,13 +51,18 @@ const generateStyle = (properties) => {
 
 // Mapping object for property labels
 const propertyLabels = {
-  'color': 'Font Color',
   'background-color': 'Background Color',
+  'color': 'Font Color',
+  'font-size': 'Font Size',
+  'font-weight': 'Font Weight',
   'padding-left': 'Padding Left',
   'padding-top': 'Padding Top',
   'padding-right': 'Padding Right',
   'padding-bottom': 'Padding Bottom',
-  'border-radius': 'Border Radius'
+  'border-radius': 'Border Radius',
+  'border-color': 'Border Color',
+  'border-width': 'Border Width',
+  'border-style': 'Border Style',
 };
 </script>
 
