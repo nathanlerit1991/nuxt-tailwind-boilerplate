@@ -94,12 +94,8 @@
                    <Img 
                     :image_src="`@/assets/images/naruto/${n}.jpg`" 
                     :image_alt="`alt${n}`"
-                    image_loading="eager"
+                    image_loading="lazy"
                     ></Img>
-                </Column>
-                <Column>
-                    <button class="tbs-btn-primary">Primary</button>
-                    <button class="tbs-btn-secondary m-5">Secondary</button>
                 </Column>
             </Row>
         </ContainerWrapper>
