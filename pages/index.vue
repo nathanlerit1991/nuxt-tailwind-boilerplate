@@ -22,6 +22,10 @@
     })
 </script>
 <style lang="scss">
+h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
 #hero {
     background: #021f2d;
     position: relative;
@@ -57,6 +61,12 @@
         aspect-ratio: 1 / 2;
     }
 }
+
+#accordion {
+    .g-accordion {
+        margin: 8px 0;
+    }
+}
 </style>
 <template>
     <SectionWrapper id="hero">
@@ -87,27 +97,29 @@
         </ContainerWrapper>
     </SectionWrapper>
 
-    <SectionWrapper>
+    <SectionWrapper id="accordion">
         <ContainerWrapper>
             <Row>
-                <Column v-for="n in 8" additional_class="sm:w-1/4">
-                   <Img 
-                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt${n}`"
-                    image_loading="lazy"
-                    ></Img>
+                <Column>
+                    <h2>The Legend of Veridiania</h2>
+                    <p>
+                        Once upon a time, in the sprawling expanse of the cosmos, amidst the twinkling stars and swirling galaxies, there existed a realm known as Veridiania. Veridiania was a world unlike any other, where magic danced in the air like fireflies on a warm summer night, and the very essence of life pulsed with an otherworldly energy.
+                    </p>
+
+                    <p>
+                        At the heart of Veridiania lay the City of Elysium, a magnificent metropolis adorned with towering spires of crystal and streets paved with shimmering cobblestones. It was here that the Council of Elders, wise beings of immense power and ancient knowledge, ruled with benevolence and grace, guiding the destiny of their realm with unwavering wisdom.
+                    </p>
                 </Column>
             </Row>
-        </ContainerWrapper>
-    </SectionWrapper>
-    <SectionWrapper>
-        <ContainerWrapper>
             <Row>
-                <Column v-for="n in 32" additional_class="sm:w-1/4">
-                   <Img 
-                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt${n}`"
-                    image_loading="lazy"
+                <Column additional_class="sm:w-6/12">
+                    <Accordion v-for="n in 8" :key="n"/>
+                </Column>
+                <Column additional_class="sm:w-6/12">
+                    <Img 
+                        image_src="@/assets/images/naruto/1.jpg" 
+                        image_alt="hero"
+                        image_loading="eager"
                     ></Img>
                 </Column>
             </Row>
@@ -117,8 +129,12 @@
     <SectionWrapper>
         <ContainerWrapper>
             <Row>
-                <Column>
-                    <Accordion v-for="n in 5" :key="n"/>
+                <Column v-for="n in 32" additional_class="sm:w-1/4">
+                   <Img 
+                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
+                    :image_alt="`alt${n}`"
+                    image_loading="lazy"
+                    ></Img>
                 </Column>
             </Row>
         </ContainerWrapper>

@@ -73,7 +73,7 @@ const propertyLabels = {
         <Column>
           <h3 class="text-lg font-bold mb-2">{{ className }}</h3>
         </Column>
-        <Column v-for="(value, property) in properties" :key="property" additional_class="sm:w-1/2">
+        <Column v-for="(value, property) in properties" :key="property" additional_class="sm:w-2/12">
           <div class="mb-4">
             <label class="block mb-1">
               {{ propertyLabels[property] }}

@@ -43,6 +43,9 @@
   </script>
   
   <style>
+  .g-accordion h2 {
+    margin-bottom: 0;
+  }
   .group .transition-icon {
     transform: rotate(0deg);
     transition: all 0.3s ease;
@@ -54,5 +57,7 @@
   .group > .content {
     overflow: hidden;
     transition: all 0.3s ease;
+    position: relative;
+    top: -5px;
   }
 </style>
