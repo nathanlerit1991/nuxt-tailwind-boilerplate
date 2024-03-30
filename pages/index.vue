@@ -78,7 +78,7 @@
                 </Column>
                 <Column additional_class="sm:w-4/12">
                    <Img 
-                    image_src="@/assets/images/solo-leveling.png" 
+                    image_src="@/assets/images/solo-leveling.webp" 
                     image_alt="hero"
                     image_loading="eager"
                     ></Img>
