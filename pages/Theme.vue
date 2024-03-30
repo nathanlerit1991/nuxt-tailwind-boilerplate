@@ -84,6 +84,9 @@ const propertyLabels = {
         <Column additional_class="mb-5">
           Preview: <button :class="className" :style="generateStyle(properties)">Text</button>
         </Column>
+        <Column>
+          <hr style="margin: 10px 0 20px 0"/>
+        </Column>
       </Row>
     </ContainerWrapper>
   </SectionWrapper>
