@@ -24,7 +24,7 @@ const props_data = defineProps({
 const placeholderImage = ref('/assets/images/lazy_placeholder.png');
 
 // Glob for image paths
-const glob = import.meta.glob('@/assets/images/**/*.{jpg,png,gif,webp}', { eager: true });
+const glob = import.meta.glob('@/assets/images/**/*.{jpg,jpeg,png,gif,webp}', { eager: true });
 const images = Object.fromEntries(
   Object.entries(glob).map(([key, value]) => [key, `${value.default}`])
 );
