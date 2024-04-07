@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref } from 'vue';
+import { ref } from 'vue';
 
 // Define props
 const props_data = defineProps({
@@ -19,33 +19,12 @@ const props_data = defineProps({
     required: true,
   },
 });
-
-// Placeholder image ref
-const placeholderImage = ref('/assets/images/lazy_placeholder.png');
-
-// Glob for image paths
-const glob = import.meta.glob('@/assets/images/**/*.{jpg,jpeg,png,gif,webp}', { eager: true });
-const images = Object.fromEntries(
-  Object.entries(glob).map(([key, value]) => [key, `${value.default}`])
-);
-
-// Preload all image URLs during initialization
-const imagePaths = Object.keys(images).reduce((acc, key) => {
-  acc[key] = images[key];
-  return acc;
-}, {});
-
-// Method to retrieve image path
-const getImagePath = () => {
-  const cleanedImagePath = props_data.image_src.replace('@/', '/');
-  return imagePaths[cleanedImagePath];
-};
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 </script>
 
 <template>
   <img
-    :src="props_data.image_loading === 'lazy' ? images[`${placeholderImage}`] : getImagePath()"
-    :data-src="props_data.image_loading === 'lazy' ? getImagePath() : null"
+    :src="baseURL + props_data.image_src"
     :alt="props_data.image_alt"
     :loading="props_data.image_loading"
   />

@@ -1,307 +1,157 @@
-<script setup>
-    import SectionWrapper from '@/components/SectionWrapper.vue'
-    import ContainerWrapper from '@/components/ContainerWrapper.vue'
-    import Row from '@/components/Row.vue'
-    import Column from '@/components/Column.vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
 
-    import Img from '@/components/UIElements/Img.vue'
-    import Calendar from '@/components/UIElements/Calendar.vue'
-    import Accordion from '@/components/UIElements/Accordion.vue'
+//VUE PRIME
+import Carousel from 'primevue/carousel';
+import Card from 'primevue/card';
 
+//CUSTOM
+import SectionWrapper from '@/components/SectionWrapper.vue'
+import ContainerWrapper from '@/components/ContainerWrapper.vue'
+import Row from '@/components/Row.vue'
+import Column from '@/components/Column.vue'
+import Img from '@/components/UIElements/Img.vue'
 
+//API
+import apiData from '@/api/restaurant-api.js'
+const resData = ref(null)
+const getTemplateData = async () => {
+    try {
+        const response = await apiData.getData();
+        resData.value = response?.data?.data;
+    } catch (error) {
+        console.error("Error", error);
+    } 
+};
+onMounted(() => {
+    getTemplateData()
+})
 
-    useHead({
-        htmlAttrs: {
-            lang: 'en'
-        },
-        title: 'Nuxt Tailwind Boilerplate',
-        meta: [{
-            name: 'description',
-            content: 'description'
-        }]
-    })
 </script>
-<style lang="scss">
-h2 {
-    font-size: 18px;
+
+<style>
+h1 {
     margin-bottom: 15px;
 }
-#hero {
-    background: #021f2d;
-    position: relative;
-    min-height: 400px;
-
-    .hero-content > div > * {
-        margin: 30px 0;
-    }
-
-    h1 {
-        font-size: 30px;
-        color: #fff;
-        line-height: 35px;
-
-        span {
-            font-size: 85px;
-            line-height: 75px;
-            font-weight: 700;
-            display: block;
-        }
-    }
-    p {
-        font-size: 18px;
-        color: #fff;
-        line-height: 18px * 1.2;
-    }
-    small {
-        color: #fff;
-    }
-
-    img {
-        max-width: 350px;
-        aspect-ratio: 1 / 2;
-    }
+h2 {
+    margin-bottom: 10px;
 }
-
-#accordion {
-    .g-accordion {
-        margin: 8px 0;
-    }
+p, li {
+    margin: 8px 0;
 }
 </style>
+
 <template>
+    <SectionWrapper>
+        <ContainerWrapper>
+            <Row>
+                <Column>
+                    <h1 class="text-xl font-bold">Welcome to Nuxtjs 3 + PrimeVue(Tailwind) + Strapi</h1>
+                    <p>This project consists of two repositories: Nuxt.js 3, utilized for templating, and Strapi, used as the content management system (CMS). Both repositories need to be run simultaneously as Nuxt.js fetches data from Strapi.</p>
+                    <p>Additionally, this project is using PrimeVue(tailwind) as a UI library, SASS as preprocessor, Axios for HTTP client library and Strapi Populate Deep to easily fetch data</p>
+                    <code class="bg-gray-200 py-1 px-3 rounded-md">Nodejs Version must be 18 above</code>
+                    
+                    <hr class="my-5">
+                    
+                    <h2 class="text-lg font-semibold">Run Nuxtjs 3</h2>
+                    <ul class="list-disc">
+                        <li>Open terminal</li>
+                        <li>Access the folder for nuxt <code class="bg-gray-200 py-1 px-3 rounded-md">cd path/folder/of/nuxt repo</code></li>
+                        <li>Run <code class="bg-gray-200 py-1 px-3 rounded-md">npm install</code></li>
+                        <li>Run <code class="bg-gray-200 py-1 px-3 rounded-md">npm run dev</code></li>
+                        <li>By default you can access Nuxt using <code class="bg-gray-200 py-1 px-3 rounded-md">http://localhost:3000/</code></li>
+                    </ul>
+
+                    <hr class="my-5">
+
+
+                    <h2 class="text-lg font-semibold">Run Strapi</h2>
+                    <ul class="list-disc">
+                        <li>Open another terminal</li>
+                        <li>Access the folder for strapi <code class="bg-gray-200 py-1 px-3 rounded-md">cd path/folder/of/strapi repo</code></li>
+                        <li>Run <code class="bg-gray-200 py-1 px-3 rounded-md">npm install</code></li>
+                        <li>Run <code class="bg-gray-200 py-1 px-3 rounded-md">npm run develop</code></li>
+                        <li>Once Strapi is running, there's no need for additional coding; you can simply access the admin page.</li>
+                        <li>By default you can access Strapi using <code class="bg-gray-200 py-1 px-3 rounded-md">http://localhost:1337/</code></li>
+                    </ul>
+                </Column>
+            </Row>
+        </ContainerWrapper>
+    </SectionWrapper>
+    <hr class="my-5">
+    <SectionWrapper>
+        <ContainerWrapper>
+            <Row>
+                <Column>
+                    <h2 class="text-lg font-semibold">Nuxtjs 3 structure</h2>
+                    <ul class="list-disc">
+                        <li>If you don't intend to implement roles and permissions, there's no need to configure routes in Nuxt.js. It will automatically generate routes for you. Just create vue file inside <code class="bg-gray-200 py-1 px-3 rounded-md">pages</code> and thats it</li>
+                        <li>Initially, we have <code class="bg-gray-200 py-1 px-3 rounded-md">.env</code> file where we specify the <code class="bg-gray-200 py-1 px-3 rounded-md">VITE_API_BASE_URL=http://127.0.0.1:1337</code>
+                        Please change the value to whatever URL of Strapi when delployed
+                        </li>
+                        <li>To make it more organize, we created <code class="bg-gray-200 py-1 px-3 rounded-md">api</code> folder. This will consist all the HTTP request</li>
+                        <li>An example API request is already provided. Simply copy and paste it, then adjust the value of <code class="bg-gray-200 py-1 px-3 rounded-md">API_PREFIX</code> according to your endpoint</li>
+                    </ul>
+                    <hr class="my-5">
+
+                    <h2 class="text-lg font-semibold">Components</h2>
+                    <ul class="list-disc">
+                        <li>There are default components available, please use them whenever possible.</li>
+                        <li><code class="bg-gray-200 py-1 px-3 rounded-md">SectionWrapper</code> <code class="bg-gray-200 py-1 px-3 rounded-md">ContainerWrapper</code> <code class="bg-gray-200 py-1 px-3 rounded-md">Row</code> and <code class="bg-gray-200 py-1 px-3 rounded-md">Column</code> will serve as the main foundation of the grid layout. They already have predefined classnames to make sure the consistency of the website. You can change the default values in <code class="bg-gray-200 py-1 px-3 rounded-md">tailwind.config.js</code></li>
+                        <li>You have the option to utilize the <code class="bg-gray-200 py-1 px-3 rounded-md">additional_class</code>prop to modify or append styling using Tailwind classnames</li>
+                        <li><code class="bg-gray-200 py-1 px-3 rounded-md">Img</code> component already have necessary data available within its props.</li>
+                        <li><code class="bg-gray-200 py-1 px-3 rounded-md">SVGIcon</code> Just convert the svg file into vue file by changing the file extension. Then, organize all SVG files within the <code class="bg-gray-200 py-1 px-3 rounded-md">components > SVG</code> folder. This setup will automatically fetch all SVG files for use.</li>
+                    </ul>
+                </Column>
+            </Row>
+        </ContainerWrapper>
+    </SectionWrapper>
+
+
+<div v-for="res in resData">
+    <!-- <SectionWrapper>
+        <ContainerWrapper>
+            <Row>
+                <Column>
+                    <div class="card" v-for="(carousel_data, carousel_data_index) in res.attributes.Carousel" :key="carousel_data_index">
+                        <Carousel :value="carousel_data.Image.data" :numVisible="1">
+                            <template #item="slotProps">
+                                <Img
+                                    :image_src="slotProps.data.attributes.url"
+                                    image_alt="alt"
+                                    image_loading="lazy"
+                                />
+                            </template>
+                        </Carousel>
+                    </div>
+                </Column>
+            </Row>
+        </ContainerWrapper>
+    </SectionWrapper> -->
+
+
+
     <SectionWrapper id="hero">
         <ContainerWrapper>
             <Row>
-                <Column additional_class="sm:w-8/12 hero-content flex items-center">
-                    <div>
-                        <h1>The Hero <span>Banner</span> Section Title</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu</p>
-                        
-                        <small>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</small>
-
-                        <div>
-                            <button class="tbs-btn-primary">Primary</button>
-                            <button class="tbs-btn-secondary m-5">Secondary</button>
-                        </div>
-                    </div>
-                </Column>
-                <Column additional_class="sm:w-4/12">
-                   <Img 
-                    image_src="@/assets/images/solo-leveling.webp" 
-                    image_alt="hero"
-                    image_loading="eager"
-                    ></Img>
+                <Column additional_class="sm:w-4/12" v-for="(card_data, card_data_index) in res.attributes.Card" :key="card_data_index">
+                    <Card>
+                        <template #title>{{ card_data.Title }}</template>
+                        <template #content>
+                            <p class="m-0">{{ card_data.Description }}</p>
+                            <Img 
+                                :image_src="card_data.Image.data?.attributes?.formats?.small?.url"
+                                image_alt="alt"
+                                image_loading="lazy"
+                            />
+                        </template>
+                    </Card>
                 </Column>
             </Row>
         </ContainerWrapper>
     </SectionWrapper>
 
-    <SectionWrapper id="accordion">
-        <ContainerWrapper>
-            <Row>
-                <Column>
-                    <h2>The Legend of Veridiania</h2>
-                    <p>
-                        Once upon a time, in the sprawling expanse of the cosmos, amidst the twinkling stars and swirling galaxies, there existed a realm known as Veridiania. Veridiania was a world unlike any other, where magic danced in the air like fireflies on a warm summer night, and the very essence of life pulsed with an otherworldly energy.
-                    </p>
 
-                    <p>
-                        At the heart of Veridiania lay the City of Elysium, a magnificent metropolis adorned with towering spires of crystal and streets paved with shimmering cobblestones. It was here that the Council of Elders, wise beings of immense power and ancient knowledge, ruled with benevolence and grace, guiding the destiny of their realm with unwavering wisdom.
-                    </p>
-                </Column>
-            </Row>
-            <Row>
-                <Column additional_class="sm:w-6/12">
-                    <Accordion v-for="n in 8" :key="n"/>
-                </Column>
-                <Column additional_class="sm:w-6/12">
-                    <Img 
-                        image_src="@/assets/images/naruto/1.jpg" 
-                        image_alt="hero"
-                        image_loading="eager"
-                    ></Img>
-                </Column>
-            </Row>
-        </ContainerWrapper>
-    </SectionWrapper>
 
-    <SectionWrapper>
-        <ContainerWrapper>
-            <Row>
-                <Column v-for="n in 32" additional_class="sm:w-1/4">
-                   <Img 
-                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt${n}`"
-                    image_loading="lazy"
-                    ></Img>
-                </Column>
-            </Row>
-        </ContainerWrapper>
-    </SectionWrapper>
-
-    <SectionWrapper>
-        <ContainerWrapper>
-            <Row>
-                <Column>
-                    <h2>The Legend of Veridiania</h2>
-
-                    <p>
-                        Once upon a time, in the sprawling expanse of the cosmos, amidst the twinkling stars and swirling galaxies, there existed a realm known as Veridiania. Veridiania was a world unlike any other, where magic danced in the air like fireflies on a warm summer night, and the very essence of life pulsed with an otherworldly energy.
-                    </p>
-
-                    <p>
-                        At the heart of Veridiania lay the City of Elysium, a magnificent metropolis adorned with towering spires of crystal and streets paved with shimmering cobblestones. It was here that the Council of Elders, wise beings of immense power and ancient knowledge, ruled with benevolence and grace, guiding the destiny of their realm with unwavering wisdom.
-                    </p>
-
-                    <p>
-                        But beyond the gleaming walls of Elysium, in the shadowy depths of the Forbidden Forest, a darkness stirred. Deep within the tangled undergrowth, an ancient evil known as the Shadowlord languished, biding its time, plotting its revenge against the light.
-                    </p>
-
-                    <p>
-                        For eons, the Shadowlord had been sealed away by the combined magic of the Elders, its malevolent influence contained within the confines of its prison. But now, fueled by hatred and thirst for dominion, it sought to break free and unleash its fury upon Veridiania once more.
-                    </p>
-
-                    <p>
-                        Unbeknownst to the Council, a prophecy had foretold of this impending doom—a prophecy whispered by the winds and etched into the annals of time. It spoke of a chosen one, a hero of legend, who would rise from the ashes of adversity to challenge the darkness and restore balance to the world.
-                    </p>
-
-                    <p>
-                        And so, fate intervened in the most unexpected of ways. In a humble village nestled amidst the rolling hills of Veridiania, a young orphan named Aria discovered an ancient amulet, pulsating with an ethereal glow. Little did she know, this seemingly insignificant trinket would set into motion a chain of events that would shape the destiny of their world.
-                    </p>
-
-                    <p>
-                        Guided by visions and guided by the whispers of the wind, Aria embarked on a perilous journey across the vast expanse of Veridiania. Along the way, she encountered allies and adversaries alike—brave warriors, wise sages, and cunning tricksters—all bound together by the threads of fate.
-                    </p>
-
-                    <p>
-                        Together, they traversed treacherous landscapes and faced unimaginable trials, confronting their deepest fears and darkest desires with unwavering resolve. Through the power of friendship and the strength of their convictions, they overcame every obstacle in their path, drawing ever closer to their ultimate destiny.
-                    </p>
-
-                    <p>
-                        Meanwhile, in the City of Elysium, whispers of unrest began to spread like wildfire through the streets. As the Council of Elders struggled to maintain order in the face of mounting chaos, dissent brewed within their ranks, threatening to tear apart the very fabric of their society.
-                    </p>
-
-                    <p>
-                        Unbeknownst to them, a traitor lurked in their midst, a puppet of the Shadowlord's insidious influence, whose machinations threatened to undo centuries of peace and prosperity. With each passing day, the darkness crept closer, its tendrils reaching ever deeper into the heart of Veridiania.
-                    </p>
-
-                    <p>
-                        But as the hour of reckoning drew near, Aria and her companions pressed onward, their spirits undaunted by the challenges that lay ahead. For they knew that their journey was not merely a quest for victory, but a testament to the resilience of the human spirit, and the enduring power of hope in the face of despair.
-                    </p>
-
-                    <p>
-                        At last, they reached the gates of the Forbidden Forest, where the Shadowlord lay in wait, shrouded in darkness and cloaked in malice. With courage in their hearts and determination in their eyes, they prepared to face their greatest foe, knowing that the fate of Veridiania hung in the balance.
-                    </p>
-
-                    <p>
-                        In a climactic battle that shook the very foundations of the world, Aria and her companions clashed with the forces of darkness, their valor shining like beacons of light in the encroaching gloom. Against all odds, they emerged victorious, banishing the Shadowlord back into the depths of its prison and restoring peace to Veridiania once more.
-                    </p>
-
-                    <p>
-                        As the dawn broke over the horizon, bathing the world in a golden glow, Aria stood triumphantly amidst the ruins of their battle, her eyes alight with the fire of victory. And though their journey had been long and arduous, she knew that their quest was far from over—for as long as there was darkness in the world, there would always be those willing to fight for the light.
-                    </p>
-
-                    <p>
-                        And so, with the promise of a new day dawning on the horizon, Aria and her companions set forth once more, their hearts filled with hope and their spirits unbroken, ready to face whatever challenges the future may bring. For in the end, they knew that as long as they stood together, nothing could ever truly extinguish the light.
-                    </p>
-                </Column>
-            </Row>
-        </ContainerWrapper>
-    </SectionWrapper>
-    <SectionWrapper>
-        <ContainerWrapper>
-            <Row>
-                <Column v-for="n in 32" additional_class="sm:w-1/4">
-                   <Img 
-                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt${n}`"
-                    image_loading="lazy"
-                    ></Img>
-                </Column>
-            </Row>
-        </ContainerWrapper>
-    </SectionWrapper>
-    <SectionWrapper>
-        <ContainerWrapper>
-            <Row>
-                <Column v-for="n in 32" additional_class="sm:w-1/4">
-                   <Img 
-                    :image_src="`@/assets/images/naruto/${n}.jpg`" 
-                    :image_alt="`alt${n}`"
-                    image_loading="lazy"
-                    ></Img>
-                </Column>
-            </Row>
-        </ContainerWrapper>
-    </SectionWrapper>
-    <SectionWrapper>
-        <ContainerWrapper>
-            <Row>
-                <Column>
-                    <h2>The Legend of Veridiania</h2>
-
-                    <p>
-                        Once upon a time, in the sprawling expanse of the cosmos, amidst the twinkling stars and swirling galaxies, there existed a realm known as Veridiania. Veridiania was a world unlike any other, where magic danced in the air like fireflies on a warm summer night, and the very essence of life pulsed with an otherworldly energy.
-                    </p>
-
-                    <p>
-                        At the heart of Veridiania lay the City of Elysium, a magnificent metropolis adorned with towering spires of crystal and streets paved with shimmering cobblestones. It was here that the Council of Elders, wise beings of immense power and ancient knowledge, ruled with benevolence and grace, guiding the destiny of their realm with unwavering wisdom.
-                    </p>
-
-                    <p>
-                        But beyond the gleaming walls of Elysium, in the shadowy depths of the Forbidden Forest, a darkness stirred. Deep within the tangled undergrowth, an ancient evil known as the Shadowlord languished, biding its time, plotting its revenge against the light.
-                    </p>
-
-                    <p>
-                        For eons, the Shadowlord had been sealed away by the combined magic of the Elders, its malevolent influence contained within the confines of its prison. But now, fueled by hatred and thirst for dominion, it sought to break free and unleash its fury upon Veridiania once more.
-                    </p>
-
-                    <p>
-                        Unbeknownst to the Council, a prophecy had foretold of this impending doom—a prophecy whispered by the winds and etched into the annals of time. It spoke of a chosen one, a hero of legend, who would rise from the ashes of adversity to challenge the darkness and restore balance to the world.
-                    </p>
-
-                    <p>
-                        And so, fate intervened in the most unexpected of ways. In a humble village nestled amidst the rolling hills of Veridiania, a young orphan named Aria discovered an ancient amulet, pulsating with an ethereal glow. Little did she know, this seemingly insignificant trinket would set into motion a chain of events that would shape the destiny of their world.
-                    </p>
-
-                    <p>
-                        Guided by visions and guided by the whispers of the wind, Aria embarked on a perilous journey across the vast expanse of Veridiania. Along the way, she encountered allies and adversaries alike—brave warriors, wise sages, and cunning tricksters—all bound together by the threads of fate.
-                    </p>
-
-                    <p>
-                        Together, they traversed treacherous landscapes and faced unimaginable trials, confronting their deepest fears and darkest desires with unwavering resolve. Through the power of friendship and the strength of their convictions, they overcame every obstacle in their path, drawing ever closer to their ultimate destiny.
-                    </p>
-
-                    <p>
-                        Meanwhile, in the City of Elysium, whispers of unrest began to spread like wildfire through the streets. As the Council of Elders struggled to maintain order in the face of mounting chaos, dissent brewed within their ranks, threatening to tear apart the very fabric of their society.
-                    </p>
-
-                    <p>
-                        Unbeknownst to them, a traitor lurked in their midst, a puppet of the Shadowlord's insidious influence, whose machinations threatened to undo centuries of peace and prosperity. With each passing day, the darkness crept closer, its tendrils reaching ever deeper into the heart of Veridiania.
-                    </p>
-
-                    <p>
-                        But as the hour of reckoning drew near, Aria and her companions pressed onward, their spirits undaunted by the challenges that lay ahead. For they knew that their journey was not merely a quest for victory, but a testament to the resilience of the human spirit, and the enduring power of hope in the face of despair.
-                    </p>
-
-                    <p>
-                        At last, they reached the gates of the Forbidden Forest, where the Shadowlord lay in wait, shrouded in darkness and cloaked in malice. With courage in their hearts and determination in their eyes, they prepared to face their greatest foe, knowing that the fate of Veridiania hung in the balance.
-                    </p>
-
-                    <p>
-                        In a climactic battle that shook the very foundations of the world, Aria and her companions clashed with the forces of darkness, their valor shining like beacons of light in the encroaching gloom. Against all odds, they emerged victorious, banishing the Shadowlord back into the depths of its prison and restoring peace to Veridiania once more.
-                    </p>
-
-                    <p>
-                        As the dawn broke over the horizon, bathing the world in a golden glow, Aria stood triumphantly amidst the ruins of their battle, her eyes alight with the fire of victory. And though their journey had been long and arduous, she knew that their quest was far from over—for as long as there was darkness in the world, there would always be those willing to fight for the light.
-                    </p>
-
-                    <p>
-                        And so, with the promise of a new day dawning on the horizon, Aria and her companions set forth once more, their hearts filled with hope and their spirits unbroken, ready to face whatever challenges the future may bring. For in the end, they knew that as long as they stood together, nothing could ever truly extinguish the light.
-                    </p>
-                </Column>
-            </Row>
-        </ContainerWrapper>
-    </SectionWrapper>
+</div>
 </template>
