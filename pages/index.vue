@@ -24,7 +24,7 @@
 <style lang="scss">
 h2 {
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 15px; 
 }
 #hero {
     background: #021f2d;
